@@ -1,0 +1,48 @@
+//To find maxmium value after combining rows and columns together
+var cubes = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+let myRowArr = [];
+let myColArr = [];
+let tempArr = [];
+let tempArr2 = [];
+let maxR = 0;
+let maxC = 0;
+let myVar1, myVar2, rowOp, colOp;
+
+for (var i = 0; i < cubes.length; i++) {
+  for (var j = 0; j < cubes[i].length; j++) {
+    myRowArr.push(cubes[i][j].toString());
+    myColArr.push(cubes[j][i].toString());
+    // console.log('cube[' + i + '][' + j + '] = ' + myRowArr);
+    // console.log('cube[' + i + '][' + j + '] = ' + myColArr);
+  }
+  rowOp = myRowArr.splice(0, 3).join('');
+  colOp = myColArr.splice(0, 3).join('');
+  tempArr.push(rowOp);
+  tempArr2.push(colOp);
+}
+console.log(tempArr);
+console.log(tempArr2);
+
+tempArr.forEach(function (el) {
+  if (maxR < el) {
+    maxR = el;
+  }
+});
+console.log('Max', maxR);
+
+tempArr2.forEach(function (el) {
+  if (maxC < el) {
+    maxC = el;
+  }
+});
+
+console.log('Max', maxC);
+
+maxR > maxC
+  ? console.log(`Row value is max ${maxR}`)
+  : console.log(`Column value is maximum ${maxC}`);
